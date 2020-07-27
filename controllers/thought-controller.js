@@ -21,6 +21,7 @@ const thoughtController = {
       .catch(err => res.json(err));
   },
   addReaction({ params, body }, res) {
+    console.log("body = "+body);
     Thought.findOneAndUpdate(
       { _id: params.thoughtId },
       { $push: { replies: body } },
