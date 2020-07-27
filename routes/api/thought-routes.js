@@ -7,9 +7,8 @@ router.route('/:userId')
 
 // /api/thoughts/<userId>/<thoughtId>
 router.route('/:userId/:thoughtId')
-.put(addReaction)
 .delete(removeThought);
 
-router.route('/:userId/:thoughtId/:reactionId').delete(removeReaction);
+//router.route('/:userId/:thoughtId/:reactionId').delete(removeReaction);
 
 module.exports = router;

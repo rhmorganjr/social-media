@@ -2,10 +2,15 @@ const { Schema, model } = require('mongoose');
 
 const UserSchema = new Schema({
   username: {
-    type: String
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
   },
   email: {
-    type: String
+    type: String,
+    required: true,
+    unique: true
   },
   thoughts: [
     {
@@ -28,9 +33,9 @@ const UserSchema = new Schema({
 });
 
 // get total count of thoughts and reactions on retrieval
-//UserSchema.virtual('thoughtCount').get(function() {
-//  return this.thoughts.reduce((total, thought) => total + thought.reactions.length + 1, 0);
-//});
+UserSchema.virtual('thoughtCount').get(function() {
+  return this.thoughts.length;
+});
 
 UserSchema.virtual('friendCount').get(function() {
   return this.friends.length;
